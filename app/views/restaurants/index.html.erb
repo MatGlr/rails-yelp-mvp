@@ -1,0 +1,32 @@
+
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.4) 50%), url('https://hd.unsplash.com/photo-1455995446964-ac64c23b70ba');">
+  <div class="banner-content">
+    <h1>Nos restaurants</h1>
+    <%= link_to "Create new restaurant", new_restaurant_path, :class=>"btn btn-info btn-lg" %>
+  </div>
+</div>
+
+<div class="container">
+  <% @restaurants.each do |restaurant| %>
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://hd.unsplash.com/photo-1467521335787-2f0fc0f0e9a0');">
+        <div class="card-category"><%= restaurant.name %></div>
+        <div class="card-description">
+          <p><%= restaurant.address %></p>
+          <p><%= restaurant.phone_number %></p>
+          <p><%= restaurant.category %></p>
+          <%= link_to "Show", restaurant_path(restaurant), :class=>"btn btn-primary" %>
+          <%= link_to "Update", edit_restaurant_path(restaurant), :class=>"btn btn-success" %>
+          <%= link_to "Add a review", new_restaurant_review_path(restaurant), :class=>"btn btn-danger" %>
+          <%= link_to "Delete", restaurant_path(restaurant),
+          method: :delete,
+          :class=>"btn btn-warning",
+          data: { confirm: "Are you sure?" } %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+</div>
